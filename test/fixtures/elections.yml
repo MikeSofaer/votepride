@@ -1,0 +1,8 @@
+first_election:
+  id: 1
+  name: Slumlord 2020
+  polls_open: 2020-11-04 00:00:00 -0800
+second_election:
+  id: 2
+  name: Slumlord 2025
+  polls_open: 2025-11-04 00:00:00 -0800

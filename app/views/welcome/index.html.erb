@@ -1,0 +1,8 @@
+<h1>Your Vote Counts</h1>
+<p>Your nation needs you</p>
+<p>Your people need you</p>
+<% election = Election.default %>
+<p>
+  Let your friends know how you plan to vote in
+  <%= link_to election.name, election %>!
+</p>

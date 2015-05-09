@@ -1,0 +1,10 @@
+<h1><%= @election.name %></h1>
+<p>You should vote!</p>
+<p>Polls open in <%=time_ago_in_words(@election.polls_open) %>.</p>
+
+Here is a list of offices related to this election
+<ul>
+  <% @election.offices.uniq.each do |office| %>
+    <li> <%= link_to office.name, election_office_path(@election, office) %> </li>
+  <% end %>
+</ul>
