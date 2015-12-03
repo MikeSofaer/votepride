@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509050544) do
+ActiveRecord::Schema.define(version: 20151203224004) do
 
   create_table "candidacies", force: true do |t|
     t.integer "candidate_id"
@@ -33,8 +33,22 @@ ActiveRecord::Schema.define(version: 20150509050544) do
     t.string   "name"
   end
 
+  create_table "motivators", force: true do |t|
+    t.integer "candidacy_id"
+    t.integer "vote_plan_id"
+    t.string  "name"
+    t.text    "text"
+  end
+
   create_table "offices", force: true do |t|
     t.string "name"
+  end
+
+  create_table "opinions", force: true do |t|
+    t.integer "voter_id"
+    t.integer "motivator_id"
+    t.integer "likingness"
+    t.text    "annotation"
   end
 
   create_table "vote_plans", force: true do |t|

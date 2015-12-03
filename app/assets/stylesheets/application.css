@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+div.motivators {
+  margin-left: 30px;
+}
+div.motivators form {
+  display: inline-block;
+}
+div.motivators form.selected {
+  border: 2px solid green;
+}

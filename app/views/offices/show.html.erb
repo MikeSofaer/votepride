@@ -5,10 +5,36 @@
   <%= @election.name %>
 </h2>
 <ul>
-  <% @office.candidates_in(@election).each do |candidate| %>
-    <li><%= candidate.name %></li>
+  <% @office.candidacies_for(@election).each do |candidacy| %>
+    <li><%= candidacy.candidate.name %></li>
+    <h3>Popular Motivators</h3>
+    <div class="motivators">
+      <% candidacy.motivators.each do |motivator| %>
+        <h4><%= motivator.name %></h4>
+        <% if current_voter %>
+          <%
+            current_opinion = Opinion.find_by(voter: current_voter, motivator: motivator)
+            yes_form_class = ""
+            no_form_class = ""
+            if current_opinion
+               yes_form_class = "selected" if current_opinion.likingness > 0
+               no_form_class = "selected" if current_opinion.likingness < 0
+            end
+          %>
+          <%= button_to [motivator, :opine, likingness: 1], form_class: yes_form_class do %>
+            <strong>YES!!</strong>
+          <% end %>
+          <%= button_to [motivator, :opine, likingness: -1], form_class: no_form_class do %>
+            <strong>Total BS!</strong>
+          <% end %>
+          <br/>
+        <% end %>
+        <%= motivator.text %>
+      <% end %>
+    <div>
   <% end %>
 </ul>
 <% unless current_voter %>
   <%= link_to "Log in to vote!", new_voter_session_path %>
 <% end %>
+

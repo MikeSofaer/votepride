@@ -1,0 +1,6 @@
+bob:
+  given_name: Bob
+  family_name: Bestvoter
+  email: bob@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(Voter, 'password') %>
+  remember_created_at: "May 10 2010"
