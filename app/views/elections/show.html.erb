@@ -4,7 +4,7 @@
 
 Here is a list of offices related to this election
 <ul>
-  <% @election.offices.uniq.each do |office| %>
-    <li> <%= link_to office.name, election_office_path(@election, office) %> </li>
+  <% @election.races.each do |race| %>
+    <li> <%= link_to race.office.name, race %> </li>
   <% end %>
 </ul>

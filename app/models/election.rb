@@ -1,7 +1,7 @@
 class Election < ActiveRecord::Base
-  has_many :candidacies
   has_many :vote_plans
-  has_many :offices, through: :candidacies
+  has_many :races
+  has_many :offices, through: :races
 
   def self.default
     first

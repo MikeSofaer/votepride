@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203224004) do
+ActiveRecord::Schema.define(version: 20151207223637) do
 
   create_table "candidacies", force: true do |t|
     t.integer "candidate_id"
-    t.integer "election_id"
-    t.integer "office_id"
+    t.integer "race_id"
   end
 
   create_table "candidates", force: true do |t|
@@ -32,6 +31,14 @@ ActiveRecord::Schema.define(version: 20151203224004) do
     t.datetime "polls_open"
     t.string   "name"
   end
+
+  create_table "intentions", force: true do |t|
+    t.integer "voter_id"
+    t.integer "race_id"
+    t.integer "candidacy_id"
+  end
+
+  add_index "intentions", ["voter_id", "race_id"], name: "index_intentions_on_voter_id_and_race_id", unique: true
 
   create_table "motivators", force: true do |t|
     t.integer "candidacy_id"
@@ -49,6 +56,11 @@ ActiveRecord::Schema.define(version: 20151203224004) do
     t.integer "motivator_id"
     t.integer "likingness"
     t.text    "annotation"
+  end
+
+  create_table "races", force: true do |t|
+    t.integer "election_id"
+    t.integer "office_id"
   end
 
   create_table "vote_plans", force: true do |t|

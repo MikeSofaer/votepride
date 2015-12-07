@@ -3,6 +3,6 @@ class MotivatorsController < ApplicationController
     motivator = Motivator.find(params[:motivator_id])
     current_voter.opine(motivator, params[:likingness])
     candidacy = motivator.candidacy
-    redirect_to election_office_path candidacy.election, candidacy.office
+    redirect_to candidacy.race
   end
 end

@@ -1,7 +1,6 @@
 class Candidacy < ActiveRecord::Base
   belongs_to :candidate
-  belongs_to :election
-  belongs_to :office
+  belongs_to :race
   has_many :commitments
   has_many :motivators
 end
