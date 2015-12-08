@@ -14,63 +14,57 @@
 ActiveRecord::Schema.define(version: 20151207223637) do
 
   create_table "candidacies", force: true do |t|
-    t.integer "candidate_id"
-    t.integer "race_id"
+    t.integer "candidate_id", null: false
+    t.integer "race_id",      null: false
   end
 
   create_table "candidates", force: true do |t|
-    t.string "name"
+    t.string "name", null: false
   end
 
   create_table "commitments", force: true do |t|
-    t.integer "vote_plan_id"
-    t.integer "candidacy_id"
+    t.integer "vote_plan_id", null: false
+    t.integer "candidacy_id", null: false
   end
 
   create_table "elections", force: true do |t|
-    t.datetime "polls_open"
-    t.string   "name"
+    t.datetime "polls_open", null: false
+    t.string   "name",       null: false
   end
 
   create_table "intentions", force: true do |t|
-    t.integer "voter_id"
-    t.integer "race_id"
-    t.integer "candidacy_id"
+    t.integer "voter_id",     null: false
+    t.integer "race_id",      null: false
+    t.integer "candidacy_id", null: false
   end
 
   add_index "intentions", ["voter_id", "race_id"], name: "index_intentions_on_voter_id_and_race_id", unique: true
 
   create_table "motivators", force: true do |t|
-    t.integer "candidacy_id"
-    t.integer "vote_plan_id"
-    t.string  "name"
+    t.integer "candidacy_id", null: false
+    t.string  "name",         null: false
     t.text    "text"
   end
 
   create_table "offices", force: true do |t|
-    t.string "name"
+    t.string "name", null: false
   end
 
   create_table "opinions", force: true do |t|
-    t.integer "voter_id"
-    t.integer "motivator_id"
-    t.integer "likingness"
+    t.integer "voter_id",     null: false
+    t.integer "motivator_id", null: false
+    t.integer "likingness",   null: false
     t.text    "annotation"
   end
 
   create_table "races", force: true do |t|
-    t.integer "election_id"
-    t.integer "office_id"
-  end
-
-  create_table "vote_plans", force: true do |t|
-    t.integer "voter_id"
-    t.integer "election_id"
+    t.integer "election_id", null: false
+    t.integer "office_id",   null: false
   end
 
   create_table "voters", force: true do |t|
-    t.string   "given_name"
-    t.string   "family_name"
+    t.string   "given_name",                          null: false
+    t.string   "family_name",                         null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

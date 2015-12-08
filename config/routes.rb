@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :elections
-  resources :races
+  resources :races do
+    resource :intention
+  end
   resources :motivators do
     post :opine
   end

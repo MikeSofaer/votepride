@@ -10,4 +10,14 @@ class Voter < ActiveRecord::Base
     p.likingness = likingness
     p.save!
   end
+
+  def intention_for(race)
+    Intention.find_by(race: race, voter: self) || Intention.new(race: race, voter: self)
+  end
+
+  def choose(race, candidacy)
+    intention = intention_for(race)
+    intention.candidacy = candidacy
+    intention.save!
+  end
 end

@@ -4,6 +4,15 @@
 <ul>
   <% @race.candidacies.each do |candidacy| %>
     <li><%= candidacy.candidate.name %></li>
+    <% if current_voter %>
+      <% if @intention.candidacy == candidacy %>
+        SOOO GOOOD
+      <% else %>
+        <%= button_to [:race_intention, race_id: @race.id, candidacy_id: candidacy.id] do %>
+          <strong>Choose</strong>
+        <% end %>
+      <% end %>
+    <% end %>
     <h3>Popular Motivators</h3>
     <div class="motivators">
       <% candidacy.motivators.each do |motivator| %>
@@ -29,7 +38,6 @@
         <%= motivator.text %>
       <% end %>
     </div>
-    </li>
   <% end %>
 </ul>
 <% unless current_voter %>
