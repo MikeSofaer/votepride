@@ -16,7 +16,7 @@
     <h3>Popular Motivators</h3>
     <div class="motivators">
       <% candidacy.motivators.each do |motivator| %>
-        <h4><%= motivator.name %></h4>
+        <h4><%= motivator.name %> (<%= motivator.opinions.where("likingness > 0").count %> people agree) </h4>
         <% if current_voter %>
           <%
             current_opinion = Opinion.find_by(voter: current_voter, motivator: motivator)
