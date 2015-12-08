@@ -6,7 +6,7 @@ class Voter < ActiveRecord::Base
   has_many :vote_plans
 
   def opine(motivator, likingness)
-    p = Opinion.find_or_create_by(voter: self, motivator: motivator)
+    p = Opinion.find_or_initialize_by(voter: self, motivator: motivator)
     p.likingness = likingness
     p.save!
   end
