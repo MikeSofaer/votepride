@@ -1,6 +1,28 @@
 bob:
+  id: 1
   given_name: Bob
   family_name: Bestvoter
   email: bob@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(Voter, 'password') %>
+  remember_created_at: "May 10 2010"
+clarence:
+  id: 2
+  given_name: Clarence
+  family_name: Clodhopper
+  email: clarence@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(Voter, 'password') %>
+  remember_created_at: "May 10 2010"
+drew:
+  id: 3
+  given_name: Drew
+  family_name: Douglass
+  email: drew@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(Voter, 'password') %>
+  remember_created_at: "May 10 2010"
+eddie:
+  id: 4
+  given_name: Eddie
+  family_name: Edge
+  email: eddie@example.com
   encrypted_password: <%= Devise::Encryptor.digest(Voter, 'password') %>
   remember_created_at: "May 10 2010"

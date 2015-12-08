@@ -3,7 +3,7 @@
 </h2>
 <ul>
   <% @race.candidacies.each do |candidacy| %>
-    <li><%= candidacy.candidate.name %></li>
+    <li><%= candidacy.candidate.name %> (<%= candidacy.intentions.count %> supporters)</li>
     <% if current_voter %>
       <% if @intention.candidacy == candidacy %>
         SOOO GOOOD

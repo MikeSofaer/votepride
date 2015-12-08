@@ -1,0 +1,13 @@
+1:
+  voter_id: 2,
+  race_id: 2,
+  candidacy_id: 3
+2:
+  voter_id: 3,
+  race_id: 2,
+  candidacy_id: 4
+3:
+  voter_id: 4,
+  race_id: 2,
+  candidacy_id: 3
+
