@@ -3,4 +3,12 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+namespace :db do
+   task :recreate => [ :drop, :create, :migrate, 'fixtures:load' ] do
+      if ENV[ 'RAILS_ENV' ] !~ /test|cucumber/
+         Rake::Task[ 'db:seed' ].invoke
+      end
+   end
+end
+
 Rails.application.load_tasks
