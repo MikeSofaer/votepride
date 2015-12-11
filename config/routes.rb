@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :elections
+  resources :voters
   resources :races do
     resource :intention
   end

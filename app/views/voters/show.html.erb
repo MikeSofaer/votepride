@@ -1,0 +1,5 @@
+<h1><%= @voter.given_name %> <%= @voter.family_name %></h1>
+
+<% @voter.intentions.each do |intention| %>
+  Voting for <%= intention.candidacy.candidate.name %> for <%= intention.race.office.name %>
+<% end %>

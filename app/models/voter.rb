@@ -3,7 +3,7 @@ class Voter < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :vote_plans
+  has_many :intentions
 
   def opine(motivator, likingness)
     p = Opinion.find_or_initialize_by(voter: self, motivator: motivator)
