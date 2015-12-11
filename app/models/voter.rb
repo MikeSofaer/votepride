@@ -4,6 +4,7 @@ class Voter < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :intentions
+  has_many :opinions
 
   def opine(motivator, likingness)
     p = Opinion.find_or_initialize_by(voter: self, motivator: motivator)
@@ -20,4 +21,9 @@ class Voter < ActiveRecord::Base
     intention.candidacy = candidacy
     intention.save!
   end
+
+  def opinions_for(race)
+    opinions.where(motivator: race.motivators)
+  end
+
 end

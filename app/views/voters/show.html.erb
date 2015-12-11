@@ -1,5 +1,14 @@
 <h1><%= @voter.given_name %> <%= @voter.family_name %></h1>
 
-<% @voter.intentions.each do |intention| %>
-  Voting for <%= intention.candidacy.candidate.name %> for <%= intention.race.office.name %>
-<% end %>
+<ul>
+  <% @voter.intentions.each do |intention| %>
+    <li>
+      Voting for <%= intention.candidacy.candidate.name %> for <%= intention.race.office.name %>
+    <ol>
+      <% @voter.opinions_for(intention.race).each do |opinion| %>
+        <li class="likingness<%= opinion.likingness %>"> <%= opinion.motivator.name %> </li>
+      <% end %>
+    </ol>
+    </li>
+  <% end %>
+</ul>

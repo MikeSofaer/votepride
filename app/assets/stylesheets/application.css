@@ -26,3 +26,11 @@ div.motivators form.selected {
 div.motivators div.text {
   margin-left: 20px;
 }
+
+.likingness1 {
+  color: green
+}
+
+.likingness-1 {
+  color: red
+}
