@@ -1,9 +1,9 @@
 <h2>
   <%= @office.name %>
 </h2>
-<ul>
+<ul class="candidates">
   <% @race.candidacies.each do |candidacy| %>
-    <li><%= candidacy.candidate.name %> (<%= candidacy.intentions.count %> supporters)</li>
+    <li><%= candidacy.candidate.name %> (<%= candidacy.intentions.count %> supporters)
     <% if current_voter %>
       <% if @intention.candidacy == candidacy %>
         SOOO GOOOD
@@ -13,7 +13,6 @@
         <% end %>
       <% end %>
     <% end %>
-    <h3>Popular Motivators</h3>
     <div class="motivators">
       <% candidacy.motivators.each do |motivator| %>
         <h4><%= motivator.name %> (<%= motivator.opinions.where("likingness > 0").count %> people agree) </h4>
@@ -35,9 +34,10 @@
           <% end %>
           <br/>
         <% end %>
-        <%= motivator.text %>
+        <div class="text"><%= motivator.text %></div>
       <% end %>
     </div>
+    </li>
   <% end %>
 </ul>
 <% unless current_voter %>
